@@ -19,7 +19,7 @@ BULLET_DAMAGE = 10
 ENEMY_HP = 100
 HIT_SCORE = 10
 KILL_SCORE = 100
-
+Hit = False
 class Bullet(arcade.Sprite):
     def __init__(self, position, velocity, damage):
         ''' 
@@ -88,12 +88,19 @@ class Window(arcade.Window):
     def update(self, delta_time):
         self.bullet_list.update()
         for e in self.enemy_list:
-            # check for collision
-            # for every bullet that hits, decrease the hp and then see if it dies
-            # increase the score
-            # e.kill() will remove the enemy sprite from the game
-            # the pass statement is a placeholder. Remove line 81 when you add your code
-            pass
+                #I dont know where the boundaries for the bullet and enemy are     
+            if (Bullet.center_x = Enemy.center_x and Bullet.center_y = Enemy.center_y): 
+                Hit = True
+                else:
+                    Hit = False
+
+            for Hit = True 
+                ENEMY_HP = ENEMY_HP - BULLET_DAMAGE
+                self.score = self.score + HIT_SCORE
+
+            for ENEMY_HP = 0
+                e.kill() 
+                self.score = self.score + KILL_SCORE 
 
     def on_draw(self):
         arcade.start_render()
@@ -110,9 +117,12 @@ class Window(arcade.Window):
 
     def on_mouse_press(self, x, y, button, modifiers):
         if button == arcade.MOUSE_BUTTON_LEFT:
-            #fire a bullet
-            #the pass statement is a placeholder. Remove line 97 when you add your code
-            pass
+            Bullet.center_x = x
+            Bullet.center_y = y + 15
+            Bullet.velocity = 10 
+
+
+            
 
 def main():
     window = Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
